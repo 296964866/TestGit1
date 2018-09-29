@@ -65,7 +65,7 @@
 
 <body>
 	<div class="layui-fluid main">
-	<!-- 	<div class="layui-row layui-col-space15">
+		<div class="layui-row layui-col-space15">
 			<div class="layui-col-md3">
 				<div class="info-box">
 					<span class="info-box-icon"
@@ -75,9 +75,48 @@
 							class="info-box-number" id="s1">90</span>
 					</div>
 				</div>
-			</div>		
-		</div> -->
-		
+			</div>
+			
+			<div class="layui-col-md3">
+				<div class="info-box">
+					<span class="info-box-icon"
+						style="background-color: #00a65a !important; color: white;"><i
+						class="fa fa-users" aria-hidden="true"></i></span>
+					<div class="info-box-content">
+						<span class="info-box-text">员工人数</span> <span
+							class="info-box-number" id="s3">65</span>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md3">
+				<div class="info-box">
+					<span class="info-box-icon"
+						style="background-color: #f39c12 !important; color: white;"><i
+						class="fa fa-users" aria-hidden="true"></i></span>
+					<div class="info-box-content">
+						<span class="info-box-text">在读班级</span> <span
+							class="info-box-number" id="s4">85</span>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md3">
+				<div class="info-box">
+					<span class="info-box-icon"
+						style="background-color: #dd4b39 !important; color: white;"><i
+						class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+					<div class="info-box-content">
+						<span class="info-box-text">毕业学员</span>
+						<span
+							class="info-box-number" id="s4">85</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layui-row">
+			<div class="layui-col-md12" style="text-align: center">
+				<h2>你的足迹</h2>
+			</div>
+		</div>
 		<div>
 			<table class="layui-table" id="tbdata"></table>
 		</div>
@@ -94,7 +133,7 @@
 			  table.render({
 			    elem: '#tbdata'
 			    ,height: '360px'
-			    ,url: 'signlist' //数据接口
+			    ,url: 'loginloglist' //数据接口
 			    ,page: true //开启分页
 			    ,cols: [[ //表头
 			    	{field: 'id', title: 'id'}
@@ -116,3 +155,4 @@
 </body>
 
 </html>
+
