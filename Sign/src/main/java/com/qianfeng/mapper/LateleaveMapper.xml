@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.LateleaveMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.entity.LateleaveKey">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="lateleave" jdbcType="VARCHAR" property="lateleave" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.qianfeng.entity.LateleaveKey">
+    delete from t_lateleave
+    where id = #{id,jdbcType=INTEGER}
+      and lateleave = #{lateleave,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.entity.LateleaveKey">
+    insert into t_lateleave (id, lateleave)
+    values (#{id,jdbcType=INTEGER}, #{lateleave,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.entity.LateleaveKey">
+    insert into t_lateleave
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="lateleave != null">
+        lateleave,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lateleave != null">
+        #{lateleave,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

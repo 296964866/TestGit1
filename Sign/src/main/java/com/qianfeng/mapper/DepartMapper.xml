@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.DepartMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.entity.Depart">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="createtime" jdbcType="DATE" property="createtime" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="dcount" jdbcType="INTEGER" property="dcount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, createtime, flag, dcount
+  </sql>
+  <select id="optionDepart" resultType="map">
+      select id, name from t_depart
+  </select>
+  
+  <select id="countDepart" resultType="int">
+   	select count(*) from t_depart
+  </select>
+  
+  <select id="departList" parameterType="map" resultType="com.qianfeng.entity.Depart">
+  select * from t_depart limit #{count},#{size}
+  </select>
+  
+  <insert id="insertDepart" parameterType="com.qianfeng.entity.Depart">
+    insert into t_depart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="dcount != null">
+        dcount,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+       <if test="dcount != null">
+        #{dcount,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateDepart" parameterType="com.qianfeng.entity.Depart">
+    update t_depart
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dcount != null">
+        name = #{dcount,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        Createtime = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  <delete id="deleteDepart" parameterType="java.lang.Integer">
+    delete from t_depart
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <select id="deleteByIdDepart" parameterType="java.lang.Integer" resultType="com.qianfeng.entity.Depart">
+	select d.* from t_sign as s
+	INNER JOIN t_depart as d
+	on s.did = d.id
+	where d.id = #{id}
+</select>
+</mapper>
